@@ -18,6 +18,7 @@ function Form() {
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
+    console.log(postData);
     e.preventDefault();
 
     dispatch(createPost(postData));
@@ -69,7 +70,7 @@ function Form() {
           value={postData.tags}
           onChange={(e) => setPostData({ ...postData, tags: e.target.value })}
         />
-        <div className={classes.fileInput}>
+        {/* <div className={classes.fileInput}>
           <FileBase
             type="file"
             multiple={false}
@@ -77,7 +78,8 @@ function Form() {
               setPostData({ ...postData, selectedFile: base64 })
             }
           ></FileBase>
-        </div>
+        </div> */}
+
         <Button
           className={classes.buttonSubmit}
           variant="contained"
