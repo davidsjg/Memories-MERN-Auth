@@ -11,20 +11,29 @@ import {
 
 import moment from "moment";
 
-function Post({ post }) {
+function Post({ post, currentId, setCurrentId }) {
   const classes = useStyles();
+
+  const handleClick = () => {
+    console.log(currentId);
+  };
 
   return (
     <Card className={classes.card} title={post.title}>
       <div>
+        <button onClick={handleClick}>click me</button>
         <Typography variant="h6">{post.creator}</Typography>
         <Typography variant="body2">
           {moment(post.createdAt).fromNow()}
         </Typography>
       </div>
       <div className={classes.overlay2}>
-        <Button style={{ color: "black" }} size="small" onClick={() => {}}>
-          <i class="fas fa-ellipsis-h"></i>
+        <Button
+          style={{ color: "black" }}
+          size="small"
+          onClick={() => setCurrentId(post._id)}
+        >
+          <i className="fas fa-ellipsis-h"></i>
         </Button>
       </div>
 
@@ -42,12 +51,12 @@ function Post({ post }) {
 
       <CardActions className={classes.cardActions}>
         <Button size="small" color="primary" onClick={() => {}}>
-          <i class="fas fa-thumbs-up"></i>
+          <i className="fas fa-thumbs-up"></i>
           Like
           {post.likeCount}
         </Button>
         <Button size="small" color="primary" onClick={() => {}}>
-          <i class="fas fa-trash"></i>
+          <i className="fas fa-trash"></i>
           Delete
         </Button>
       </CardActions>
