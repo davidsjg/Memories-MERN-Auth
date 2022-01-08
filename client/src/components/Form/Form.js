@@ -10,6 +10,8 @@ function Form({ currentId, setCurrentId }) {
     currentId ? state.posts.find((p) => p._id === currentId) : null
   );
 
+  console.log(post);
+
   const handleClick = () => {
     console.log(currentId);
     console.log("sup");
@@ -24,8 +26,8 @@ function Form({ currentId, setCurrentId }) {
   });
 
   useEffect(() => {
-    if (post) setPostData(post);
-  });
+    // if (post) setPostData(post);
+  }, [post]);
 
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -56,8 +58,9 @@ function Form({ currentId, setCurrentId }) {
         <TextField
           name="creator"
           variant="outlined"
-          label="Creator"
+          placeholder={post ? post.creator : "Creator"}
           fullWidth
+          // placeholder={post && post.creator}
           value={postData.creator}
           onChange={(e) =>
             setPostData({ ...postData, creator: e.target.value })
@@ -66,15 +69,16 @@ function Form({ currentId, setCurrentId }) {
         <TextField
           name="title"
           variant="outlined"
-          label="Title"
+          placeholder={post ? post.title : "Title"}
           fullWidth
+          // placeholder={post && post.title}
           value={postData.title}
           onChange={(e) => setPostData({ ...postData, title: e.target.value })}
         />
         <TextField
           name="message"
           variant="outlined"
-          label="Message"
+          placeholder={post ? post.message : "Message"}
           fullWidth
           value={postData.message}
           onChange={(e) =>
@@ -84,7 +88,7 @@ function Form({ currentId, setCurrentId }) {
         <TextField
           name="tags"
           variant="outlined"
-          label="Tags"
+          placeholder={post ? post.tags.join(" ") : "Tags"}
           fullWidth
           value={postData.tags}
           onChange={(e) => setPostData({ ...postData, tags: e.target.value })}
