@@ -10,11 +10,9 @@ function Form({ currentId, setCurrentId }) {
     currentId ? state.posts.find((p) => p._id === currentId) : null
   );
 
-  console.log(post);
-
   const handleClick = () => {
-    console.log(currentId);
-    console.log("sup");
+    // console.log(currentId);
+    // console.log("sup");
   };
 
   const [postData, setPostData] = useState({
@@ -27,14 +25,16 @@ function Form({ currentId, setCurrentId }) {
 
   useEffect(() => {
     // if (post) setPostData(post);
-  }, [post]);
+    console.log("sup");
+  }, [post, postData]);
 
   const classes = useStyles();
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
-    console.log(postData);
+    // console.log(postData);
     e.preventDefault();
+    // console.log(currentId);
 
     if (currentId) {
       dispatch(updatePost(currentId, postData));
@@ -46,7 +46,7 @@ function Form({ currentId, setCurrentId }) {
 
   return (
     <Paper className={classes.paper}>
-      <button onClick={handleClick}>click me</button>
+      {/* <button onClick={handleClick}>click me</button> */}
 
       <form
         autoComplete="off"

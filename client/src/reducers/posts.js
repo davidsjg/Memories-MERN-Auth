@@ -1,4 +1,5 @@
 export default (posts = [], action) => {
+  // console.log(action);
   switch (action.type) {
     case "FETCH_ALL":
       return action.payload;
@@ -6,7 +7,7 @@ export default (posts = [], action) => {
       return [...posts, action.payload];
     case "UPDATE":
       return posts.map((post) =>
-        post.id === action.payload._id ? action.payload : post
+        post._id === action.payload._id ? action.payload : post
       );
 
     default:

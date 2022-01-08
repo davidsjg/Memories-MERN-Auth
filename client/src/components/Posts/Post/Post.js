@@ -15,13 +15,13 @@ function Post({ post, currentId, setCurrentId }) {
   const classes = useStyles();
 
   const handleClick = () => {
-    console.log(currentId);
+    // console.log(currentId);
   };
 
   return (
     <Card className={classes.card} title={post.title}>
       <div>
-        <button onClick={handleClick}>click me</button>
+        {/* <button onClick={handleClick}>click me</button> */}
         <Typography variant="h6">{post.creator}</Typography>
         <Typography variant="body2">
           {moment(post.createdAt).fromNow()}
