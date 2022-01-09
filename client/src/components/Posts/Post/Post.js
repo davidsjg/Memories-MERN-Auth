@@ -45,6 +45,9 @@ function Post({ post, currentId, setCurrentId }) {
 
       <CardContent>
         <Typography className={classes.title} variant="h5" gutterBottom>
+          {post.title}
+        </Typography>
+        <Typography variant="h5" gutterBottom>
           {post.message}
         </Typography>
       </CardContent>

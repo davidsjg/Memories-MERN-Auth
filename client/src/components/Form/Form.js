@@ -25,7 +25,6 @@ function Form({ currentId, setCurrentId }) {
 
   useEffect(() => {
     // if (post) setPostData(post);
-    console.log("sup");
   }, [post, postData]);
 
   const classes = useStyles();
@@ -41,8 +40,18 @@ function Form({ currentId, setCurrentId }) {
     } else {
       dispatch(createPost(postData));
     }
+    clear();
   };
-  const clear = () => {};
+  const clear = () => {
+    setCurrentId(null);
+    setPostData({
+      creator: "",
+      title: "",
+      message: "",
+      tags: "",
+      selectedFile: "",
+    });
+  };
 
   return (
     <Paper className={classes.paper}>
@@ -54,7 +63,9 @@ function Form({ currentId, setCurrentId }) {
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        <Typography variant="h6"></Typography>
+        <Typography variant="h6">
+          {post ? "Update a Memory" : "Create a Memory"}
+        </Typography>
         <TextField
           name="creator"
           variant="outlined"
