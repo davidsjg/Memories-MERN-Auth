@@ -8,11 +8,18 @@ import {
   Button,
   Typography,
 } from "@material-ui/core";
+import { useDispatch } from "react-redux";
+import { deletePost } from "../../../actions/posts";
 
 import moment from "moment";
 
+const handleDelete = (e) => {
+  console.log(e);
+};
+
 function Post({ post, currentId, setCurrentId }) {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const handleClick = () => {
     // console.log(currentId);
@@ -58,7 +65,11 @@ function Post({ post, currentId, setCurrentId }) {
           Like
           {post.likeCount}
         </Button>
-        <Button size="small" color="primary" onClick={() => {}}>
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => dispatch(deletePost(post._id))}
+        >
           <i className="fas fa-trash"></i>
           Delete
         </Button>
