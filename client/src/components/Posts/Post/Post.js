@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { deletePost } from "../../../actions/posts";
+import { deletePost, likePost } from "../../../actions/posts";
 
 import moment from "moment";
 
@@ -24,6 +24,8 @@ function Post({ post, currentId, setCurrentId }) {
   const handleClick = () => {
     // console.log(currentId);
   };
+
+  console.log(post);
 
   return (
     <Card className={classes.card} title={post.title}>
@@ -60,7 +62,11 @@ function Post({ post, currentId, setCurrentId }) {
       </CardContent>
 
       <CardActions className={classes.cardActions}>
-        <Button size="small" color="primary" onClick={() => {}}>
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => dispatch(likePost(post._id))}
+        >
           <i className="fas fa-thumbs-up"></i>
           Like
           {post.likeCount}
