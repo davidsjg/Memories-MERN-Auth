@@ -16,6 +16,8 @@ export const createPost = async (req, res) => {
 
   const newPost = new PostMessage(post);
 
+  console.log(newPost);
+
   try {
     let test = await newPost.save();
 

@@ -21,6 +21,7 @@ function Form({ currentId, setCurrentId }) {
     message: "",
     tags: "",
     selectedFile: "",
+    likeCount: 0,
   });
 
   useEffect(() => {
