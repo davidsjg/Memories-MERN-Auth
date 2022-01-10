@@ -11,23 +11,43 @@ import {
   TextField,
 } from "@material-ui/core";
 import { GoogleLogin } from "react-google-login";
+import { signin, signup } from "../../actions/auth";
 
 import useStyles from "./styles";
 import Input from "./Input";
 import Icon from "./icon";
 
+const initialState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
+
 const Auth = () => {
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
+  const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  const handleChange = () => {};
+    if (isSignup) {
+      dispatch(signup(formData, navigate));
+    } else {
+      dispatch(signin(formData, navigate));
+    }
+  };
 
-  const handleShowPassword = () =>
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleShowPassword = (e) =>
     setShowPassword((prevShowPassword) => !prevShowPassword);
 
   const switchMode = () => {

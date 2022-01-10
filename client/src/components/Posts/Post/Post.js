@@ -25,8 +25,6 @@ function Post({ post, currentId, setCurrentId }) {
     // console.log(currentId);
   };
 
-  console.log(post);
-
   return (
     <Card className={classes.card} title={post.title}>
       <div>
