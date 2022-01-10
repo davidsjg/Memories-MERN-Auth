@@ -3,7 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 export const signin = (formData, navigate) => async (dispatch) => {
   try {
-    // log in the user...
+    //desctructer data from request
+    const { data } = await api.signIn(formData);
+
+    dispatch({ type: "AUTH", data });
 
     navigate("/");
   } catch (error) {
@@ -13,7 +16,9 @@ export const signin = (formData, navigate) => async (dispatch) => {
 
 export const signup = (formData, navigate) => async (dispatch) => {
   try {
-    // sign up the user...
+    const { data } = await api.signUp(formData);
+
+    dispatch({ type: "AUTH", data });
 
     navigate("/");
   } catch (error) {

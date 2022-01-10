@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 
 const postSchema = mongoose.Schema({
-  likeCount: {
-    type: Number,
-    defaut: 1,
+  likes: {
+    type: [String],
+    defaut: [],
   },
   title: String,
   message: String,
