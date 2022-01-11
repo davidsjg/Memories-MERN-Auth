@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { createPost, updatePost } from "../../actions/posts";
 
 function Form({ currentId, setCurrentId }) {
+  const classes = useStyles();
+  const dispatch = useDispatch();
   const post = useSelector((state) =>
     currentId ? state.posts.find((p) => p._id === currentId) : null
   );
@@ -27,9 +29,6 @@ function Form({ currentId, setCurrentId }) {
   useEffect(() => {
     // if (post) setPostData(post);
   }, [post, postData]);
-
-  const classes = useStyles();
-  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     // console.log(postData);

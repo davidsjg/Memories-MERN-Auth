@@ -9,6 +9,7 @@ export const signin = async (req, res) => {
 
   try {
     const existingUser = await User.findOne({ email });
+    console.log(existingUser);
 
     if (!existingUser)
       return res.status(404).json({ message: "User doesn't exist" });
@@ -17,6 +18,8 @@ export const signin = async (req, res) => {
       password,
       existingUser.password
     );
+    console.log("isPasswordCorrect below");
+    console.log(isPasswordCorrect);
     if (!isPasswordCorrect)
       return res.status(400).json({ message: "Invalid credentials" });
 
@@ -27,6 +30,8 @@ export const signin = async (req, res) => {
       //options object
       { expiresIn: "1h" }
     );
+    console.log("existingUser.token below");
+    console.log(existingUser.token);
     res.status(200).json({ result: existingUser.token });
   } catch (error) {
     res.status(500).json({ message: "Something went wrong." });

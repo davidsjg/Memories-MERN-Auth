@@ -39,6 +39,7 @@ const Auth = () => {
     if (isSignup) {
       dispatch(signup(formData, navigate));
     } else {
+      console.log(formData);
       dispatch(signin(formData, navigate));
     }
   };
