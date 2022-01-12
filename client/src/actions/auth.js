@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 export const signin = (formData, navigate) => async (dispatch) => {
   try {
     //desctructer data from request
-    const response = await api.signIn(formData);
+    const { data } = await api.signIn(formData);
 
-    console.log(response);
+    console.log(data);
 
-    dispatch({ type: "AUTH", response });
+    dispatch({ type: "AUTH", data });
 
     navigate("/");
   } catch (error) {

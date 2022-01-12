@@ -4,6 +4,8 @@ import jwt from "jsonwebtoken";
 
 import User from "../models/user.js";
 
+const secret = "test";
+
 export const signin = async (req, res) => {
   const { email, password } = req.body;
 
@@ -26,13 +28,13 @@ export const signin = async (req, res) => {
     const token = jwt.sign(
       { email: existingUser.email, id: existingUser._id },
       //secret string only I know, put in separate ENV file
-      "test",
+      secret,
       //options object
       { expiresIn: "1h" }
     );
     console.log("existingUser.token below");
     console.log(existingUser.token);
-    res.status(200).json({ result: existingUser.token });
+    res.status(200).json({ result: existingUser, token });
   } catch (error) {
     res.status(500).json({ message: "Something went wrong." });
   }
@@ -62,7 +64,7 @@ export const signup = async (req, res) => {
     const token = jwt.sign(
       { email: result.email, id: result._id },
       //secret string only I know, put in separate ENV file
-      "test",
+      secret,
       //options object
       { expiresIn: "1h" }
     );
